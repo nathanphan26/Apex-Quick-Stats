@@ -2,7 +2,7 @@
   "name": "apex",
   "version": "1.0.0",
   "description": "Apex Quick Stats",
-  "main": "app.js",
+  "main": "/server/app.js",
   "scripts": {
     "dev": "concurrently \"nodemon app.js\" \"cd client && npm start\""
   },
@@ -14,11 +14,10 @@
     "express": "^4.16.4",
     "mongoose": "^5.4.19",
     "node-fetch": "^2.3.0",
-    "nodemon": "^1.18.10",
-    "request": "^2.88.0",
-    "uuid": "^3.3.2"
+    "request": "^2.88.0"
   },
   "devDependencies": {
+    "nodemon": "^1.18.10",
     "concurrently": "^4.1.0"
   }
 }
