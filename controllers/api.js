@@ -2,6 +2,27 @@ const axios = require('axios');
 
 const port = process.env.PORT || 5000;
 
+exports.api_post_username = (req, res, next) => {
+    axios.get(`http://localhost:${port}/profile/5/${req.body.username}`)
+        .then(response => {
+            let data = response.data;
+            if(data.success) {
+                res.json(response.data);
+            } else {
+                axios.get('/search/5' + req.body.username)
+                    .then(response => {
+                        res.json(response.data);
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
+
 exports.api_get_username = (req, res, next) => {
     const params = {
         headers: {
@@ -17,7 +38,7 @@ exports.api_get_username = (req, res, next) => {
             let data = response.data;
             // console.log(data);
             const obj = createProfile(data);
-            
+
             axios.post(`http://localhost:${port}/profile`, obj)
                 .then(response => {
                     console.log(response.data);

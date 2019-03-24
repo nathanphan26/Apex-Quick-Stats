@@ -14,6 +14,23 @@ exports.profile_get_all = (req, res, next) => {
         });
 }
 
+exports.profile_get_platform_username = (req, res, next) => {
+    Profile.findOne({ username: req.params.name })
+        .then(data => {
+            if(data == null) {
+                res.json({
+                    success: false
+                });
+            } else {
+                console.log(data);
+                res.json({
+                    success: true,
+                    data: data
+                });
+            } 
+        });
+}
+
 exports.profile_post_or_modify = (req, res, next) => {
     const profile = {
         // _id: new mongoose.Types.ObjectId(),
