@@ -15,13 +15,16 @@ class Input extends Component {
     const username = this.state.username;
 
     if(username && username.length > 0){
-      axios.get(`/api/search/${username}`)
+      const params = {
+        username: username
+      }
+      axios.post(`/api`, params)
         .then(res => {
           if(res.data){
+            // console.log(res.data);
             this.setState({
-                character: res.data
+                character: res.data.data
             });
-            // console.log(this.state.character.data.metadata.platformUserHandle);
           }
         })
         .catch(err => console.log(err))
@@ -38,8 +41,7 @@ class Input extends Component {
 
   render() {
     let { username } = this.state.username;
-    let { character } = this.state.character;
-    // console.log(this.state.username);
+
     return (
       <div>
         <div>

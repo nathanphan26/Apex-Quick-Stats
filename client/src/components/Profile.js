@@ -2,7 +2,12 @@ import React from 'react';
 
 const Profile = ({ character }) => {
 
-    console.log(character);
+
+  const champions = character && character !== "" ? character.champions.map((item, key) => {
+    return <li>Legend: {item.legend}</li>
+  }) : '';
+
+  console.log(character);
 
   return (
     <div>
@@ -12,9 +17,10 @@ const Profile = ({ character }) => {
           <div>
             <h3>Username: {character.username}</h3>
             <p>Level: {character.level}</p>
-            <p>Total Kills: {character.total_kills}</p>
-            <h4>Legend 1: {character.character1}</h4>
-            <p>Stats: {character.stat1}</p>
+            <p>Total Kills: {character.totalKills}</p>
+            <ul>
+              {champions}
+            </ul>
           </div>
         )
         :
