@@ -4,7 +4,14 @@ const Profile = ({ character }) => {
 
 
   const champions = character && character !== "" ? character.champions.map((item, key) => {
-    return <li>Legend: {item.legend}</li>
+    return <li>
+      Legend: {item.legend}
+      <ul>
+        {item.stats.map((item, key) => {
+          return <li>{item.statName}: {item.statValue}</li>
+        })}
+      </ul>
+    </li>
   }) : '';
 
   console.log(character);
