@@ -9,7 +9,7 @@ exports.api_post_username = (req, res, next) => {
             if(data.success) {
                 res.json(response.data);
             } else {
-                axios.get('/search/5' + req.body.username)
+                axios.get(`http://localhost:${port}/api/search/5/${req.body.username}`)
                     .then(response => {
                         res.json(response.data);
                     })
