@@ -1,4 +1,5 @@
 import React from 'react';
+import { Jumbotron, Card, CardHeader, CardTitle, CardBody, CardText } from 'reactstrap';
 
 const Profile = ({ character }) => {
 
@@ -13,6 +14,23 @@ const Profile = ({ character }) => {
       </ul>
     </li>
   }) : '';
+  
+  const legends = character.champions.map((item, key) => {
+    const stats = item.stats.map((stat, key) => {
+      return <li>{stat.statName}: {stat.statValue}</li>
+    });
+    return <Card>
+            <CardHeader>{item.legend}</CardHeader>
+            <CardBody>
+              <CardTitle>Stats</CardTitle>
+              <CardText>
+                <ul>
+                  {stats}
+                </ul>
+              </CardText>
+            </CardBody>
+          </Card>
+  });
 
   console.log(character);
 
@@ -21,6 +39,7 @@ const Profile = ({ character }) => {
     {
         character && character !== "" ? 
         (
+          {/*
           <div>
             <h3>Username: {character.username}</h3>
             <p>Level: {character.level}</p>
@@ -29,6 +48,13 @@ const Profile = ({ character }) => {
               {champions}
             </ul>
           </div>
+          */}
+          
+          <Jumbotron>
+            <h1 className="display-3">{character.username}</h1>
+            <h4>Level {character.level}</h4>
+            <h4>Total Kills: {character.totalKills}</h4>
+          </Jumbotron>
         )
         :
         (
