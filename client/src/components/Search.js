@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Input, Button, InputGroup } from 'reactstrap';
 
 import Profile from './Profile';
 
 
-class Input extends Component {
+class Search extends Component {
 
   state = {
     username: "",
@@ -43,15 +44,17 @@ class Input extends Component {
     let { username } = this.state.username;
 
     return (
-      <div>
-        <div>
-            <input type="text" onChange={this.handleChange} value={username} />
-            <button onClick={this.searchUsername}>Search</button>
+      <div className="container">
+        <InputGroup className="mt-2">
+            <Input type="text" onChange={this.handleChange} value={username} /> 
+            <Button color="primary" onClick={this.searchUsername}>Search</Button>
+        </InputGroup>
+        <div className="container">
+          <Profile character={this.state.character} />
         </div>
-        <Profile character={this.state.character} />
       </div>
     )
   }
 }
 
-export default Input
+export default Search;
