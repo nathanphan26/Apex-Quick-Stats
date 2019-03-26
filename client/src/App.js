@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.css';
 
-import Input from './components/Input';
+import Search from './components/Search';
 import Header from './components/Header';
 
 const App = () => {
   return (
     <div className="App">
       <Header />
-      <Input />
+      <Search />
     </div>
   );
 }
