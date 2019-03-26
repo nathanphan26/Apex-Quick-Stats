@@ -1,9 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const routes = require('./routes/api');
+const morgan = require('morgan');
+
+const apiRoutes = require('./routes/api');
 const profileRoutes = require('./routes/profile');
-const path = require('path');
+const userRoutes = require('./routes/user');
+
 require('dotenv').config();
 
 const app = express();
@@ -18,6 +21,8 @@ mongoose.connect(process.env.DB, { useNewUrlParser: true })
 //since mongoose promise is depreciated, we overide it with node's promise
 mongoose.Promise = global.Promise;
 
+app.use(morgan('dev'));
+
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -26,8 +31,9 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 
-app.use('/api', routes);
+app.use('/api', apiRoutes);
 app.use('/profile', profileRoutes);
+app.use('/user', userRoutes);
 
 app.use((req, res, next) => {
   const error = new Error('Not found');
