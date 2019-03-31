@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Input, Button, InputGroup } from 'reactstrap';
+import { Container, Input, Button, InputGroup } from 'reactstrap';
 
 import Profile from './Profile';
 
@@ -15,10 +15,11 @@ class Search extends Component {
   searchUsername = () => {
     const username = this.state.username;
 
-    if(username && username.length > 0){
+    if (username && username.length > 0){
       const params = {
         username: username
       }
+
       axios.post(`/api`, params)
         .then(res => {
           if(res.data){
@@ -29,7 +30,7 @@ class Search extends Component {
           }
         })
         .catch(err => console.log(err))
-    }else {
+    } else {
       console.log('Username required')
     }
   }
@@ -44,15 +45,15 @@ class Search extends Component {
     let { username } = this.state.username;
 
     return (
-      <div className="container">
+      <Container>
         <InputGroup className="mt-2">
             <Input type="text" onChange={this.handleChange} value={username} /> 
             <Button color="primary" onClick={this.searchUsername}>Search</Button>
         </InputGroup>
-        <div className="container">
+        <Container>
           <Profile character={this.state.character} />
-        </div>
-      </div>
+        </Container>
+      </Container>
     )
   }
 }

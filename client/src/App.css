@@ -6,3 +6,25 @@
     transform: rotate(360deg);
   }
 }
+
+.CardDeck {
+  margin-bottom: 20px;
+}
+
+.Card {
+  max-width: 300px;
+}
+
+.CardImgContainer {
+  max-height: 200px;
+  overflow: hidden;
+  background-color: grey;
+}
+
+.CardImg {
+  /* display: block; */
+  max-height: initial;
+  margin-top: -50px;
+  /* width: auto; */
+  /* height: auto; */
+}

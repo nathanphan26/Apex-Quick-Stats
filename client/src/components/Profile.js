@@ -1,5 +1,7 @@
 import React from 'react';
-import { Jumbotron, Card, CardDeck, CardHeader, CardBody, CardText } from 'reactstrap';
+import { Jumbotron, Card, CardDeck, CardHeader, CardBody, CardText, CardImg, Col, Row} from 'reactstrap';
+
+import '../App.css';
 
 const Profile = ({ character }) => {
   
@@ -7,7 +9,11 @@ const Profile = ({ character }) => {
     const stats = item.stats.map((stat, key) => {
       return <li>{stat.statName}: {stat.statValue}</li>
     });
-    return <Card>
+    return  <Col xs="4">
+            <Card className="Card">
+            <div className="CardImgContainer">
+              <CardImg className="CardImg" top src="https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-lifeline.png.adapt.crop16x9.png" alt="Card image cap" />
+            </div>
             <CardHeader>{item.legend}</CardHeader>
             <CardBody>
               <CardText>
@@ -17,6 +23,7 @@ const Profile = ({ character }) => {
               </CardText>
             </CardBody>
           </Card>
+          </Col>
   }) : '';
 
   return (
@@ -32,9 +39,9 @@ const Profile = ({ character }) => {
               <h4>Total Kills: {character.totalKills}</h4>
             </Jumbotron>
             
-            <CardDeck>
+            <Row className="justify-content-around mb-5">
               { legends }
-            </CardDeck>
+            </Row>
           </div>
 
         )
