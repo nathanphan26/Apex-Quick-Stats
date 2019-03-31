@@ -31,6 +31,11 @@ class Header extends Component {
             <Navbar color="dark" dark expand="md">
                 <NavbarBrand href="/">Apex Quick Stats</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
+                <Nav className="ml-auto" navbar>
+                        <NavItem>
+                            <NavLink tag={Link} to='/compare'>Compare</NavLink>
+                        </NavItem>
+                    </Nav>
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
                         <NavItem>
