@@ -8,6 +8,7 @@ const StatsSchema = new Schema({
 
 const ChampionSchema = new Schema({
     legend: String,
+    image: String,
     stats: [StatsSchema]
 },{ _id: false });
 

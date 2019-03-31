@@ -58,6 +58,7 @@ function createProfile(data) {
     data.data.children.forEach(child => {
         let newChild = {};
         newChild.legend = child.metadata.legend_name;
+        newChild.image = child.metadata.icon;
         newChild.stats = [];
         child.stats.forEach(stat => {
             let newStat = {};

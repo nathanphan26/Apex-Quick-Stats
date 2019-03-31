@@ -6,13 +6,14 @@ import '../App.css';
 const Profile = ({ character }) => {
   
   const legends = character && character !== "" ? character.champions.map((item, key) => {
+    const image = item.image;
     const stats = item.stats.map((stat, key) => {
       return <li>{stat.statName}: {stat.statValue}</li>
     });
     return  <Col xs="4">
             <Card className="Card">
             <div className="CardImgContainer">
-              <CardImg className="CardImg" top src="https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-lifeline.png.adapt.crop16x9.png" alt="Card image cap" />
+              <CardImg className="CardImg" top src={image} alt="Card image cap" />
             </div>
             <CardHeader>{item.legend}</CardHeader>
             <CardBody>
