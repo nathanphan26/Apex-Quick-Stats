@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { Jumbotron, Card, CardDeck, CardHeader, CardTitle, CardBody, CardText } from 'reactstrap';
+import React from 'react';
+import { Jumbotron, Card, CardDeck, CardHeader, CardBody, CardText } from 'reactstrap';
 
 const Profile = ({ character }) => {
   

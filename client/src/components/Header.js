@@ -7,6 +7,9 @@ import {
     Nav,
     NavItem,
     NavLink } from 'reactstrap';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+import Login from './Login';
   
 class Header extends Component {
     constructor(props) {
@@ -26,15 +29,15 @@ class Header extends Component {
         return (
         <div>
             <Navbar color="dark" dark expand="md">
-            <NavbarBrand href="/">Apex Quick Stats</NavbarBrand>
-            <NavbarToggler onClick={this.toggle} />
-            <Collapse isOpen={this.state.isOpen} navbar>
-                <Nav className="ml-auto" navbar>
-                    <NavItem>
-                        <NavLink href="/login/">Login</NavLink>
-                    </NavItem>
-                </Nav>
-            </Collapse>
+                <NavbarBrand href="/">Apex Quick Stats</NavbarBrand>
+                <NavbarToggler onClick={this.toggle} />
+                <Collapse isOpen={this.state.isOpen} navbar>
+                    <Nav className="ml-auto" navbar>
+                        <NavItem>
+                            <NavLink tag={Link} to='/login'>Login</NavLink>
+                        </NavItem>
+                    </Nav>
+                </Collapse>
             </Navbar>
         </div>
         );
